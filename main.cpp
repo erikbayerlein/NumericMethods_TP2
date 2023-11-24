@@ -42,6 +42,7 @@ double Cramer(int n, double c[3][3], double v[], int i) {
   return dx;
 }
 
+
 void imprimirMatriz(double matriz[][3], int linhas, int colunas) {
   for (int i = 0; i < linhas; ++i) {
     cout <<"|";  // Nova linha após cada linha da matriz
@@ -52,6 +53,13 @@ void imprimirMatriz(double matriz[][3], int linhas, int colunas) {
   }
 }
 
+
+void DadosEntrada(){
+
+}
+
+
+
 int main() {
   // Exemplo de uso
   int n = 3;
@@ -59,7 +67,20 @@ int main() {
   double termos_independentes[3] = {8, -11, -3};
   double x[3];
 
-  
+  // receber entradas da matriz c
+  cout << "Digite os valores da matriz: " << endl;
+  for (int i = 0; i < n; i++) {
+    for (int f = 0; f < n; f++) {
+      cout << "elemento da linha " << i+1 << " e coluna " << f+1 << ":" << endl; cin >> coeficientes[i][f];
+        }
+    }
+
+  // receber entradas do vetor v
+  cout << "Digite os valores do vetor independente: " << endl;
+  for (int w = 0; w < n; w++) {
+    cout << "elemento da linha " << w+1 << endl; cin >> termos_independentes[w];
+    }
+
   for (int i = 0; i < n; i++) {
     double a[3][3];
     for (int p = 0; p < n; p++) {
