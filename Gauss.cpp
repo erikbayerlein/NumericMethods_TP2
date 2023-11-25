@@ -21,7 +21,6 @@ double Det_Elim_Gauss(int n, double c[3][3]){
 }
 
 
-
 double Cramer(int n, double c[3][3], double v[], int i) {
     double k[3][3];
     for (int p = 0; p < n; p++) {
@@ -53,30 +52,33 @@ void imprimirMatriz(double matriz[][3], int linhas, int colunas) {
 }
 
 
-void DadosEntrada(){
 
+void receber_entrada_C(int n, double coeficientes[][3]) {
+    cout << "Digite os valores da matriz: " << endl;
+    for (int i = 0; i < n; i++) {
+        for (int f = 0; f < n; f++) {
+            cout << "elemento da linha " << i + 1 << " e coluna " << f + 1 << ":" << endl;
+            cin >> coeficientes[i][f];
+        }
+    }
+}
+void receber_entrada_V (int n, double termos_independentes[]){
+    cout << "Digite os valores do vetor independente: " << endl;
+    for (int w = 0; w < n; w++) {
+        cout << "elemento da linha " << w+1 << endl; cin >> termos_independentes[w];
+    }
 }
 
 int main() {
-    // Exemplo de uso
+    //Entradas padrão
     int n = 3;
     double coeficientes[3][3] = {{2, 1, -1}, {-3, -1, 2}, {-2, 1, 2}};
     double termos_independentes[3] = {8, -11, -3};
     double x[3];
 
-    // receber entradas da matriz c
-    cout << "Digite os valores da matriz: " << endl;
-    for (int i = 0; i < n; i++) {
-        for (int f = 0; f < n; f++) {
-            cout << "elemento da linha " << i+1 << " e coluna " << f+1 << ":" << endl; cin >> coeficientes[i][f];
-        }
-    }
-
-    // receber entradas do vetor v
-    cout << "Digite os valores do vetor independente: " << endl;
-    for (int w = 0; w < n; w++) {
-        cout << "elemento da linha " << w+1 << endl; cin >> termos_independentes[w];
-    }
+    //usar essas funções no if do menu: se a opção escolhida for entradas do usuário
+    receber_entrada_C(n, coeficientes);
+    receber_entrada_V(n, termos_independentes);
 
     for (int i = 0; i < n; i++) {
         double a[3][3];
@@ -95,6 +97,4 @@ int main() {
         cout << "d" << i + 1 << " = " << x[i] << endl;
     }
 }
-//
-// Created by bruna on 23/11/2023.
-//
+
