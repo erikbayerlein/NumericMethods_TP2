@@ -27,6 +27,7 @@ void printMatrix(const vector<vector<double>>& A) {
     cout << endl;
 }
 
+
 // Gauss-Jordan, recebe a matriz e o n, nao normaliza e RETORNA A MATRIZ escalonada
 vector<vector<double>> gaussJordanAndGetDiagonalizedMatrix(vector<vector<double>> A, int n) {
     //colunas
@@ -56,8 +57,9 @@ double determinantDiagonal(const vector<vector<double>>& A) {
     return det;
 }
 
+
 // Função para resolver o sistema linear pela regra de Cramer
-vector<double> solveSystemByCramer(vector<vector<double>> A, vector<double> B) {
+vector<double> solveSystemByCramerGaussJordan(vector<vector<double>> A, vector<double> B, double a) {
     int n = A.size();
     vector<double> solution;
 
@@ -85,6 +87,7 @@ vector<double> solveSystemByCramer(vector<vector<double>> A, vector<double> B) {
         // Divide cada determinante calculado pelo determinante original para obter a solução
         for (int i = 0; i < n; ++i) {
             solution[i] /= detA;
+            solution[i] *= a;
         }
     } else {
         cout << "O sistema é indeterminado ou impossível de ser resolvido pela regra de Cramer." << endl;
@@ -93,24 +96,27 @@ vector<double> solveSystemByCramer(vector<vector<double>> A, vector<double> B) {
     return solution;
 }
 
+
+
 int main() {
 
-    int n = 3;
+    int n = 4;
     vector<vector<double>> matrix = {
-        {2, 1, -1},
-        {-3, -1, 2},
-        {-2, 1, 2}
+        {2, 1, -1, 2},
+        {-3, -1, 2, 5},
+        {-2, 1, 2, 8},
+        {2, 5, 7, 10},
     };
-    vector<double> b = {8, -11, -3};
+    vector<double> b = {8, -11, -3, 4};
     
     cout << "Matriz original:" << endl;
     printMatrix(matrix);
 
-    vector<double> solution = solveSystemByCramer(matrix, b);
+    vector<double> solution = solveSystemByCramerGaussJordan(matrix, b, 1);
 
     cout << "\nSolução do sistema:" << endl;
     for (int i = 0; i < n; ++i) {
-        cout << "x[" << i + 1 << "] = " << solution[i] << endl;
+        cout << "d[" << i + 1 << "] = " << solution[i] << endl;
     }
 
     return 0;
