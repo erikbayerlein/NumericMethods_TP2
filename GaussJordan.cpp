@@ -16,7 +16,7 @@ void printMatrixWithB(const vector<vector<double>>& A, const vector<double>& B) 
 }
 
 // Função para imprimir a matriz
-void printMatrix(const vector<vector<double>>& A) {
+void printMatrix1(const vector<vector<double>>& A) {
     int n = A.size();
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
@@ -48,7 +48,7 @@ vector<vector<double>> gaussJordanAndGetDiagonalizedMatrix(vector<vector<double>
 
 // Recebe a matriz e calcula o determinante multiplicando os elementos da diagonal
 // matriz tem que ser triangular ou diagonal
-double determinantDiagonal(const vector<vector<double>>& A) {
+double determinantDiagonal1(const vector<vector<double>>& A) {
     int n = A.size();
     double det = 1.0;
     for (int i = 0; i < n; ++i) {
@@ -72,16 +72,16 @@ vector<double> solveSystemByCramerGaussJordan(vector<vector<double>> A, vector<d
         }
 
         // Aplica o método de Gauss-Jordan e imprime a matriz diagonalizada
-        printMatrix(modifiedMatrix);
+        printMatrix1(modifiedMatrix);
         vector<vector<double>> diagonalizedMatrix = gaussJordanAndGetDiagonalizedMatrix(modifiedMatrix, n);
         // Calcula o determinante da matriz diagonal após a diagonalização e adiciona ao vetor solução
-        double detAi = determinantDiagonal(diagonalizedMatrix);
+        double detAi = determinantDiagonal1(diagonalizedMatrix);
         solution.push_back(detAi);
     }
     //Diagonaliza A 
     vector<vector<double>> ADiagonalized = gaussJordanAndGetDiagonalizedMatrix(A, n);
     // Calcula o determinante de A original 
-    double detA = determinantDiagonal(ADiagonalized);
+    double detA = determinantDiagonal1(ADiagonalized);
 
     if (detA != 0.0) {
         // Divide cada determinante calculado pelo determinante original para obter a solução
@@ -122,7 +122,7 @@ vector<double> solveSystemByCramerGaussJordan(vector<vector<double>> A, vector<d
     return 0;
 }*/
 
-void receber_entrada_C(int n, vector<vector<double>> coeficientes) {
+void receber_entrada_C1(int n, vector<vector<double>>& coeficientes) {
     cout << "Digite os valores da matriz: " << endl;
     for (int i = 0; i < n; i++) {
         for (int f = 0; f < n; f++) {
@@ -131,7 +131,7 @@ void receber_entrada_C(int n, vector<vector<double>> coeficientes) {
         }
     }
 }
-void receber_entrada_V (int n, vector<double> termos_independentes){
+void receber_entrada_V1(int n, vector<double>& termos_independentes){
     cout << "Digite os valores do vetor independente: " << endl;
     for (int w = 0; w < n; w++) {
         cout << "elemento da linha " << w+1 << endl; cin >> termos_independentes[w];

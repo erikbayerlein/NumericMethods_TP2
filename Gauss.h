@@ -18,9 +18,9 @@ vector<vector<int>> lerMatriz(int n);
 
 vector<int> lerVetor(int n);
 
-void receber_entrada_C(int n, vector<vector<double>> coeficientes);
+void receber_entrada_C(int n, vector<vector<double>>& coeficientes);
 
-void receber_entrada_V (int n, vector<double> termos_independentes);
+void receber_entrada_V (int n, vector<double>& termos_independentes);
 
 
 #endif //GAUSS_H

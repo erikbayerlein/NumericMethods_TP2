@@ -157,7 +157,7 @@ vector<int> lerVetor(int n) {
     return 0;
 }*/
 
-void receber_entrada_C(int n, vector<vector<double>> coeficientes) {
+void receber_entrada_C(int n, vector<vector<double>>& coeficientes) {
     cout << "Digite os valores da matriz: " << endl;
     for (int i = 0; i < n; i++) {
         for (int f = 0; f < n; f++) {
@@ -166,7 +166,7 @@ void receber_entrada_C(int n, vector<vector<double>> coeficientes) {
         }
     }
 }
-void receber_entrada_V (int n, vector<double> termos_independentes){
+void receber_entrada_V(int n, vector<double>& termos_independentes){
     cout << "Digite os valores do vetor independente: " << endl;
     for (int w = 0; w < n; w++) {
         cout << "elemento da linha " << w+1 << endl; cin >> termos_independentes[w];

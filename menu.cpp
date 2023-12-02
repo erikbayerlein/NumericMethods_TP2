@@ -4,6 +4,7 @@
 #include <thread>
 #include <chrono>
 #include "menu.h"
+#include <vector>
 
 using namespace std;
 
@@ -82,22 +83,23 @@ void menu() {
 
             int opcao1;
             cin >> opcao1;
-
-            
-            vector<vector<double>> C, vector<double> V, double a,int n;
+            double a;int n;
             //SubMenu
             if (opcao1 == 1) {
                 cout << "Metodo Gauss-Normal selecionado. Informe o numero (n) de colunas e linhas da matriz e o parametro a " << endl;
                 cout << "n: "; cin >> n;
                 cout << "a: "; cin >> a;
-        
+
+                vector<vector<double>> C(n, vector<double>(n, 0.0));
+                vector<double>V(n, (n, 0.0));
+
                 receber_entrada_C(n, C);
                 receber_entrada_V (n, V);
 
-                vector<double> solution = solveSystemByCramerGauss(C,V,a);
+                vector<double> solucao = solveSystemByCramerGauss(C,V,a);
                 cout << "\nSolucao do sistema:" << endl;
                 for (int i = 0; i < n; ++i) {
-                    cout << "d[" << i + 1 << "] = " << solution[i] << endl;
+                    cout << "d[" << i + 1 << "] = " << solucao[i] << endl;
                 }
                 this_thread::sleep_for(chrono::seconds(2));
 
@@ -106,8 +108,11 @@ void menu() {
                 cout << "n: "; cin >> n;
                 cout << "a: "; cin >> a;
 
-                receber_entrada_C(n, C);
-                receber_entrada_V(n, V);
+                vector<vector<double>> C(n, vector<double>(n, 0.0));
+                vector<double>V(n, (n, 0.0));
+
+                receber_entrada_C1(n, C);
+                receber_entrada_V1(n, V);
 
                 vector<double> solution = solveSystemByCramerGaussJordan(C,V,a);
                 cout << "\nSolucao do sistema:" << endl;
@@ -115,8 +120,6 @@ void menu() {
                     cout << "d[" << i + 1 << "] = " << solution[i] << endl;
                 }
                 this_thread::sleep_for(chrono::seconds(2));
-
-                vector<double> solution = solveSystemByCramerGaussJordan(C,V,a);
             }
 
         }else if (opcao == 3) {
