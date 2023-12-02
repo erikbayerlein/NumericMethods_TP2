@@ -1,8 +1,26 @@
-//
-// Created by victoria on 02/12/2023.
-//
+#ifndef GAUSS_H
+#define GAUSS_H
 
-#ifndef NUMERICMETHODS_TP2_GAUSS_H
-#define NUMERICMETHODS_TP2_GAUSS_H
+#include <vector>
+#include <list>
 
-#endif //NUMERICMETHODS_TP2_GAUSS_H
+using namespace std;
+
+void printMatrix(const vector<vector<double>>& A);
+
+vector<vector<double>> Escalonar_Gauss(vector<vector<double>>& matriz, int n);
+
+double determinantDiagonal(const vector<vector<double>>& A);
+
+vector<double> solveSystemByCramerGauss(vector<vector<double>> A, vector<double> B, double a);
+
+vector<vector<int>> lerMatriz(int n);
+
+vector<int> lerVetor(int n);
+
+void receber_entrada_C(int n, vector<vector<double>> coeficientes);
+
+void receber_entrada_V (int n, vector<double> termos_independentes);
+
+
+#endif //GAUSS_H

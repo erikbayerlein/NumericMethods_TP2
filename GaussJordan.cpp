@@ -98,7 +98,7 @@ vector<double> solveSystemByCramerGaussJordan(vector<vector<double>> A, vector<d
 
 
 
-int main() {
+/*int main() {
 
     int n = 4;
     vector<vector<double>> matrix = {
@@ -120,4 +120,20 @@ int main() {
     }
 
     return 0;
+}*/
+
+void receber_entrada_C(int n, vector<vector<double>> coeficientes) {
+    cout << "Digite os valores da matriz: " << endl;
+    for (int i = 0; i < n; i++) {
+        for (int f = 0; f < n; f++) {
+            cout << "elemento da linha " << i + 1 << " e coluna " << f + 1 << ":" << endl;
+            cin >> coeficientes[i][f];
+        }
+    }
+}
+void receber_entrada_V (int n, vector<double> termos_independentes){
+    cout << "Digite os valores do vetor independente: " << endl;
+    for (int w = 0; w < n; w++) {
+        cout << "elemento da linha " << w+1 << endl; cin >> termos_independentes[w];
+    }
 }
